@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - My Web App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="styles/tailwind.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div id="sidebar" class="bg-blue-900 text-white w-64 space-y-6 py-7 px-2 transition-all duration-300 transform md:relative">
+            <button id="sidebarToggle" class="text-white focus:outline-none px-4">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            <nav>
+                <a href="index.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 flex items-center space-x-2">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6"></path>
+                    </svg>
+                    <span class="sidebar-text">Inicio</span>
+                </a>
+                <a href="reports.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 flex items-center space-x-2">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2a4 4 0 00-4-4H3m6 6v2a4 4 0 004 4h2m-6-6h6m-6 0a4 4 0 014-4h2m0 0a4 4 0 014 4v2m0-6h6m-6 0a4 4 0 00-4-4H9m0 0a4 4 0 00-4 4v2m0 0H3"></path>
+                    </svg>
+                    <span class="sidebar-text">Reportes</span>
+                </a>
+                <a href="users.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 flex items-center space-x-2">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A1.5 1.5 0 016.5 17h11a1.5 1.5 0 011.379 2.804l-5.5 3.5a1.5 1.5 0 01-1.758 0l-5.5-3.5z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12a5 5 0 100-10 5 5 0 000 10z"></path>
+                    </svg>
+                    <span class="sidebar-text">Usuarios</span>
+                </a>
+                <a href="config.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 flex items-center space-x-2">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span class="sidebar-text">Configuración</span>
+                </a>
+            </nav>
+        </div>
+        <!-- Main content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Header -->
+            <header class="bg-white shadow py-4 px-6 flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="images/logo.png" alt="Logo" class="h-10 w-10 mr-4">
+                    <input type="text" placeholder="Buscar..." class="bg-gray-200 border border-gray-300 rounded py-2 px-4 text-gray-800 w-full md:w-auto ml-4">
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="notificationButton" class="relative z-10 block p-2 bg-gray-200 rounded-full focus:outline-none">
+                            <svg class="h-6 w-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                            </svg>
+                            <span id="notificationCount" class="absolute top-0 right-0 inline-block w-6 h-6 bg-red-600 text-white text-xs font-bold rounded-full flex items-center justify-center">3</span>
+                        </button>
+                        <div id="notificationDropdown" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg overflow-hidden z-20">
+                            <div class="py-2" id="notificationList">
+                                <div class="flex justify-between items-center px-4 py-2 text-gray-800 hover:bg-gray-100 border-b border-gray-200">
+                                    <span>Notification 1</span>
+                                    <button class="remove-notification text-red-600 hover:text-red-800 bg-red-200 rounded-full p-1">
+                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="flex justify-between items-center px-4 py-2 text-gray-800 hover:bg-gray-100 border-b border-gray-200">
+                                    <span>Notification 2</span>
+                                    <button class="remove-notification text-red-600 hover:text-red-800 bg-red-200 rounded-full p-1">
+                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="flex justify-between items-center px-4 py-2 text-gray-800 hover:bg-gray-100 border-b border-gray-200">
+                                    <span>Notification 3</span>
+                                    <button class="remove-notification text-red-600 hover:text-red-800 bg-red-200 rounded-full p-1">
+                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="noNotificationsMessage" class="hidden px-4 py-2 text-gray-800 text-center">
+                                <p class="text-gray-600">¡No tienes nuevas notificaciones en este momento!</p>
+                            </div>
+                            <button id="closeNotifications" class="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600">Close</button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <a href="perfil.html" class="relative z-10 block p-2 bg-gray-200 rounded-full focus:outline-none">
+                            <svg class="h-6 w-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A1.5 1.5 0 016.5 17h11a1.5 1.5 0 011.379 2.804l-5.5 3.5a1.5 1.5 0 01-1.758 0l-5.5-3.5z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12a5 5 0 100-10 5 5 0 000 10z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </header>
+            <!-- Main content area -->
+            <main class="flex-1 overflow-y-auto p-6">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Perfil del Usuario</h2>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="username" class="block text-gray-700">Nombre de Usuario</label>
+                            <input type="text" id="username" class="w-full mt-1 p-2 border border-gray-300 rounded" placeholder="Nombre de Usuario">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700">Correo Electrónico</label>
+                            <input type="email" id="email" class="w-full mt-1 p-2 border border-gray-300 rounded" placeholder="Correo Electrónico">
+                        </div>
+                        <div>
+                            <label for="password" class="block text-gray-700">Contraseña Actual</label>
+                            <input type="password" id="password" class="w-full mt-1 p-2 border border-gray-300 rounded" placeholder="Contraseña Actual">
+                        </div>
+                        <div>
+                            <label for="newPassword" class="block text-gray-700">Nueva Contraseña</label>
+                            <input type="password" id="newPassword" class="w-full mt-1 p-2 border border-gray-300 rounded" placeholder="Nueva Contraseña">
+                        </div>
+                        <div>
+                            <label for="confirmPassword" class="block text-gray-700">Confirmar Nueva Contraseña</label>
+                            <input type="password" id="confirmPassword" class="w-full mt-1 p-2 border border-gray-300 rounded" placeholder="Confirmar Nueva Contraseña">
+                        </div>
+                        <div>
+                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </main>
+            <!-- Footer -->
+            <footer class="bg-white shadow py-4 px-6">
+                <div class="flex justify-between items-center">
+                    <p class="text-gray-600">&copy; 2025 My Web App. Todos los derechos reservados.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-600 hover:text-gray-800">Política de Privacidad</a>
+                        <a href="#" class="text-gray-600 hover:text-gray-800">Términos de Servicio</a>
+                        <a href="#" class="text-gray-600 hover:text-gray-800">Contacto</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="scripts/app.js"></script>
+</body>
+</html>

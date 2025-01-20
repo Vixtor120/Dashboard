@@ -1,0 +1,31 @@
+{
+  "name": "my-web-app",
+  "version": "1.0.0",
+  "description": "A simple web application using Tailwind CSS and JavaScript.",
+  "main": "src/scripts/app.js",
+  "scripts": {
+    "build": "tailwindcss build src/styles/tailwind.css -o dist/styles.css",
+    "start": "live-server src"
+  },
+  "keywords": [
+    "web",
+    "application",
+    "tailwind",
+    "javascript"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "tailwindcss": "^2.2.19",
+    "live-server": "^1.2.1"
+  },
+  "devDependencies": {},
+  "homepage": "https://github.com/yourusername/my-web-app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/my-web-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/my-web-app/issues"
+  }
+}
