@@ -10,7 +10,6 @@
 </head>
 <body class="bg-gray-100 text-gray-800">
     <div class="flex h-screen">
-        <!-- Sidebar -->
         <div id="sidebar" class="bg-blue-900 text-white w-64 space-y-6 py-7 px-2 transition-all duration-300 transform md:relative">
             <button id="sidebarToggle" class="text-white focus:outline-none px-4">
                 <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -45,9 +44,7 @@
                 </a>
             </nav>
         </div>
-        <!-- Main content -->
         <div class="flex-1 flex flex-col">
-            <!-- Header -->
             <header class="bg-white shadow py-4 px-6 flex justify-between items-center">
                 <div class="flex items-center">
                     <img src="images/logo.png" alt="Logo" class="h-10 w-10 mr-4">
@@ -104,10 +101,8 @@
                     </div>
                 </div>
             </header>
-            <!-- Main content area -->
             <main class="flex-1 overflow-y-auto p-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Widgets -->
                     <div class="bg-gradient-to-r from-green-400 to-blue-500 p-4 rounded-lg shadow text-white">
                         <h2 class="text-xl font-bold">Usuarios Activos</h2>
                         <p class="mt-2">1,234</p>
@@ -121,11 +116,9 @@
                         <p class="mt-2">56</p>
                     </div>
                 </div>
-                <!-- Charts and tables -->
                 <div class="mt-6">
                     <div class="bg-white p-4 rounded-lg shadow">
                         <h2 class="text-xl font-bold text-gray-800">Gráficos Interactivos</h2>
-                        <!-- Chart containers -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
                             <div>
                                 <canvas id="interactiveChart1" class="h-64"></canvas>
@@ -174,14 +167,12 @@
                                         <td class="border px-4 py-2 border-gray-300 truncate max-w-xs">luis.fernandez@example.com</td>
                                         <td class="border px-4 py-2 border-gray-300">05/01/2023</td>
                                     </tr>
-                                    <!-- More rows -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </main>
-            <!-- Footer -->
             <footer class="bg-white shadow py-4 px-6">
                 <div class="flex justify-between items-center">
                     <p class="text-gray-600">&copy; 2025 My Web App. Todos los derechos reservados.</p>
@@ -196,7 +187,6 @@
     </div>
     <script src="scripts/app.js"></script>
     <script>
-        // Initialize Chart.js for the first interactive chart
         const ctx1 = document.getElementById('interactiveChart1').getContext('2d');
         const interactiveChart1 = new Chart(ctx1, {
             type: 'bar',
@@ -220,7 +210,6 @@
             }
         });
 
-        // Initialize Chart.js for the second interactive chart
         const ctx2 = document.getElementById('interactiveChart2').getContext('2d');
         const interactiveChart2 = new Chart(ctx2, {
             type: 'line',
